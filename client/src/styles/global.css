@@ -92,6 +92,7 @@ button:hover {
 }
 
 .toolbar-actions {
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -130,6 +131,80 @@ button:hover {
   line-height: 1.8;
   margin: 0 0 14px;
   text-indent: 2em;
+}
+
+.document-meta {
+  align-items: center;
+  border-bottom: 1px solid #e2e8f0;
+  color: #475569;
+  display: flex;
+  font-size: 13px;
+  justify-content: space-between;
+  margin: -24px 0 28px;
+  padding-bottom: 12px;
+}
+
+.document-node {
+  outline: 0 solid transparent;
+}
+
+.document-node:hover {
+  outline: 2px solid #bfdbfe;
+}
+
+.empty-document {
+  align-content: center;
+  display: grid;
+  min-height: 520px;
+  text-align: center;
+}
+
+.upload-zone {
+  align-items: center;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  gap: 8px;
+  min-height: 40px;
+  padding: 8px 12px;
+}
+
+.upload-zone input {
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  width: 1px;
+}
+
+.formula-node {
+  border-left: 3px solid #146ef5;
+  margin: 18px 0;
+  padding: 12px 0 12px 16px;
+}
+
+.formula-preview {
+  margin: 8px 0;
+  transform-origin: center;
+}
+
+.formula-node code {
+  background: #f1f5f9;
+  border-radius: 4px;
+  color: #334155;
+  display: block;
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+  padding: 8px;
+}
+
+.error-banner {
+  background: #fee2e2;
+  border-bottom: 1px solid #fecaca;
+  color: #991b1b;
+  padding: 10px 24px;
 }
 
 .style-panel {

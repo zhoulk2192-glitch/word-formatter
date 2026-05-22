@@ -1,3 +1,5 @@
+import type { UploadedDocument } from "@word-formatter/shared";
+
 export async function getCapabilitySummary() {
   try {
     const response = await fetch("/api/health");
@@ -9,4 +11,21 @@ export async function getCapabilitySummary() {
   } catch {
     return null;
   }
+}
+
+export async function parseDocument(file: File): Promise<UploadedDocument> {
+  const formData = new FormData();
+  formData.append("document", file);
+
+  const response = await fetch("/api/documents/parse", {
+    method: "POST",
+    body: formData
+  });
+
+  if (!response.ok) {
+    const body = (await response.json().catch(() => null)) as { error?: string } | null;
+    throw new Error(body?.error ?? "文档解析失败");
+  }
+
+  return response.json() as Promise<UploadedDocument>;
 }

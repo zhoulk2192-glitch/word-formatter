@@ -9,6 +9,7 @@ healthRouter.get("/", (_request, response) => {
     capabilities: [
       "template-style-extraction",
       "document-preview",
+      "formula-structure-extraction",
       "manual-style-application",
       "auto-formatting",
       "docx-export"

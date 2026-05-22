@@ -37,6 +37,10 @@ npm run dev:client
 The client runs at `http://127.0.0.1:5173`.
 The API runs at `http://127.0.0.1:4173`.
 
+## DOCX Structure Parsing
+
+The first parser pass reads `word/document.xml` from uploaded DOCX files, extracts paragraph nodes, basic paragraph style ids, and OMML formula objects. Formula nodes preserve the raw OMML XML and expose a best-effort LaTeX string for frontend rendering.
+
 ## Checks
 
 ```bash

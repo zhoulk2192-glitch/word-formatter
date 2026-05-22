@@ -1,3 +1,5 @@
+import type { FormulaNode } from "./formulaTypes";
+
 export interface DocumentNode {
   id: string;
   type: "paragraph" | "heading" | "table" | "image" | "formula";
@@ -6,17 +8,15 @@ export interface DocumentNode {
   formula?: FormulaNode;
 }
 
-export interface FormulaNode {
-  latex: string;
-  omml: string;
-  display: boolean;
-  alignment?: "left" | "center" | "right";
-  scale?: number;
-}
-
 export interface UploadedDocument {
   id: string;
   fileName: string;
   nodes: DocumentNode[];
   uploadedAt: string;
+  page?: {
+    marginTopPt?: number;
+    marginRightPt?: number;
+    marginBottomPt?: number;
+    marginLeftPt?: number;
+  };
 }

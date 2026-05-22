@@ -19,5 +19,9 @@
   ],
   "engines": {
     "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^5.8.0",
+    "jszip": "^3.10.1"
   }
 }

@@ -1,6 +1,9 @@
 import { FileText, Library, Wand2 } from "lucide-react";
 import type { FormattingStyle } from "@word-formatter/shared";
+import { DocumentViewer } from "../components/DocumentViewer";
 import { StylePanel } from "../components/StylePanel";
+import { UploadDropzone } from "../components/UploadDropzone";
+import { useDocumentUpload } from "../hooks/useDocumentUpload";
 import { getCapabilitySummary } from "../services/documentApi";
 
 const starterStyles: FormattingStyle[] = [
@@ -32,6 +35,7 @@ const starterStyles: FormattingStyle[] = [
 
 export function EditorPage() {
   void getCapabilitySummary();
+  const { document, error, isUploading, uploadDocument } = useDocumentUpload();
 
   return (
     <main className="app-shell">
@@ -55,23 +59,15 @@ export function EditorPage() {
           </div>
           <div className="toolbar-actions">
             <button type="button">上传模板</button>
-            <button type="button">打开文档</button>
+            <UploadDropzone isUploading={isUploading} onUpload={uploadDocument} />
             <button className="primary" type="button">导出 DOCX</button>
           </div>
         </header>
 
+        {error ? <div className="error-banner">{error}</div> : null}
+
         <div className="document-stage">
-          <article className="document-page">
-            <h2>第一章 项目背景</h2>
-            <p>
-              这里会显示上传后的 Word 文档内容。第一阶段先建立可运行的编辑器壳，
-              后续步骤会接入 DOCX 渲染、选区映射、样式应用和导出。
-            </p>
-            <p>
-              右侧样式面板会展示从模板中提取出的标题、正文、段落和页面格式，
-              用户可以手动刷格式，也可以触发自动排版。
-            </p>
-          </article>
+          <DocumentViewer document={document} />
         </div>
       </section>
 

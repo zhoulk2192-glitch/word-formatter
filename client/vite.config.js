@@ -3,6 +3,7 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   plugins: [react()],
+  cacheDir: "../.generated/vite-cache",
   build: {
     outDir: "../.generated/client"
   },
