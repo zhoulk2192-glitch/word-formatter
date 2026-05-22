@@ -8,6 +8,7 @@ healthRouter.get("/", (_request, response) => {
     service: "word-formatter-api",
     capabilities: [
       "template-style-extraction",
+      "template-page-layout-extraction",
       "document-preview",
       "formula-structure-extraction",
       "manual-style-application",

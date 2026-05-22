@@ -41,6 +41,10 @@ The API runs at `http://127.0.0.1:4173`.
 
 The first parser pass reads `word/document.xml` from uploaded DOCX files, extracts paragraph nodes, basic paragraph style ids, and OMML formula objects. Formula nodes preserve the raw OMML XML and expose a best-effort LaTeX string for frontend rendering.
 
+## Template Style Extraction
+
+Template uploads read `word/styles.xml` and `word/document.xml` to extract paragraph styles, page margins, spacing, indentation, font settings, and an initial formula style placeholder when OMML objects are present.
+
 ## Checks
 
 ```bash

@@ -4,6 +4,7 @@ import { DocumentViewer } from "../components/DocumentViewer";
 import { StylePanel } from "../components/StylePanel";
 import { UploadDropzone } from "../components/UploadDropzone";
 import { useDocumentUpload } from "../hooks/useDocumentUpload";
+import { useTemplateStyles } from "../hooks/useTemplateStyles";
 import { getCapabilitySummary } from "../services/documentApi";
 
 const starterStyles: FormattingStyle[] = [
@@ -36,6 +37,13 @@ const starterStyles: FormattingStyle[] = [
 export function EditorPage() {
   void getCapabilitySummary();
   const { document, error, isUploading, uploadDocument } = useDocumentUpload();
+  const {
+    library,
+    error: templateError,
+    isExtracting,
+    uploadTemplate
+  } = useTemplateStyles();
+  const styles = library?.styles.length ? library.styles : starterStyles;
 
   return (
     <main className="app-shell">
@@ -58,20 +66,31 @@ export function EditorPage() {
             <h1>网页版 Word 排版工具</h1>
           </div>
           <div className="toolbar-actions">
-            <button type="button">上传模板</button>
+            <UploadDropzone
+              isUploading={isExtracting}
+              label={library ? "更换模板" : "上传模板"}
+              name="template"
+              onUpload={uploadTemplate}
+            />
             <UploadDropzone isUploading={isUploading} onUpload={uploadDocument} />
             <button className="primary" type="button">导出 DOCX</button>
           </div>
         </header>
 
         {error ? <div className="error-banner">{error}</div> : null}
+        {templateError ? <div className="error-banner">{templateError}</div> : null}
+        {library ? (
+          <div className="info-banner">
+            已提取模板：{library.templateFileName} · {library.styles.length} 个样式
+          </div>
+        ) : null}
 
         <div className="document-stage">
           <DocumentViewer document={document} />
         </div>
       </section>
 
-      <StylePanel styles={starterStyles} />
+      <StylePanel styles={styles} />
     </main>
   );
 }

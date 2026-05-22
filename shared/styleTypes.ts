@@ -1,4 +1,4 @@
-export type StyleCategory = "heading" | "body" | "caption" | "list" | "page" | "custom";
+export type StyleCategory = "heading" | "body" | "caption" | "list" | "page" | "formula" | "custom";
 
 export interface FormattingProperties {
   fontFamily?: string;
@@ -14,6 +14,10 @@ export interface FormattingProperties {
   alignment?: "left" | "center" | "right" | "justify";
   formulaScale?: number;
   formulaAlignment?: "left" | "center" | "right";
+  pageMarginTopPt?: number;
+  pageMarginRightPt?: number;
+  pageMarginBottomPt?: number;
+  pageMarginLeftPt?: number;
 }
 
 export interface FormattingStyle {
@@ -21,4 +25,12 @@ export interface FormattingStyle {
   name: string;
   category: StyleCategory;
   properties: FormattingProperties;
+  source?: "template" | "system" | "user";
+}
+
+export interface ExtractedStyleLibrary {
+  id: string;
+  templateFileName: string;
+  styles: FormattingStyle[];
+  extractedAt: string;
 }

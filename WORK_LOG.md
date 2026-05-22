@@ -12,3 +12,9 @@
 - Added DOCX upload parsing API.
 - Added basic Open XML paragraph extraction and formula node extraction.
 - Added frontend DOCX upload control, document structure preview, and KaTeX formula rendering.
+
+## 2026-05-22 Step 3
+
+- Added template style extraction endpoint.
+- Extracted paragraph styles, page margins, and formula style placeholders from template DOCX files.
+- Connected template upload to the right-side style panel.

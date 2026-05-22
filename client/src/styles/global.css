@@ -207,6 +207,13 @@ button:hover {
   padding: 10px 24px;
 }
 
+.info-banner {
+  background: #e0f2fe;
+  border-bottom: 1px solid #bae6fd;
+  color: #075985;
+  padding: 10px 24px;
+}
+
 .style-panel {
   background: #f8fafc;
   border-left: 1px solid #d9e2ec;
